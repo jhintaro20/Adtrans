@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — AdTrans Logistics</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── SERVICES-SPECIFIC ── */
+
+    /* Detail card layout */
+    .svc-detail-card {
+      display: grid; grid-template-columns: 280px 1fr;
+      border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      margin-bottom: 2rem;
+      background: var(--white);
+      box-shadow: 0 4px 24px rgba(10,22,40,0.05);
+    }
+    .svc-detail-card:hover {
+      box-shadow: 0 12px 48px rgba(10,22,40,0.1);
+    }
+
+    .svc-aside {
+      background: var(--navy);
+      padding: 3rem 2rem;
+      display: flex; flex-direction: column; justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .svc-aside-top { display: flex; flex-direction: column; gap: 1rem; }
+    .svc-aside svg.svc-big-icon { width: 54px; height: 54px; fill: var(--sky); flex-shrink: 0; }
+    .svc-aside h3 {
+      font-size: 1.55rem; font-weight: 800;
+      color: var(--text-dark-primary); line-height: 1.2;
+    }
+    .svc-aside p {
+      font-size: 0.9rem; color: var(--text-dark-secondary);
+      line-height: 1.7; font-weight: 400;
+    }
+    .svc-aside a.btn-primary { align-self: flex-start; font-size: 0.88rem; padding: 0.7rem 1.4rem; }
+
+    .svc-body { padding: 2.5rem 3rem; }
+    .svc-body-tag {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--sky);
+      display: flex; align-items: center; gap: 8px; margin-bottom: 0.75rem;
+    }
+    .svc-body-tag::before { content: ''; width: 20px; height: 2px; background: var(--sky); }
+    .svc-body h4 {
+      font-size: 1.35rem; font-weight: 800;
+      color: var(--text-light-primary); margin-bottom: 0.85rem;
+    }
+    .svc-body > p {
+      font-size: 0.95rem; color: var(--text-light-muted);
+      line-height: 1.75; margin-bottom: 1.75rem; font-weight: 400;
+    }
+
+    .feature-list {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem;
+      list-style: none; margin-bottom: 1.5rem;
+    }
+    .feature-list li {
+      font-size: 0.9rem; color: var(--text-light-secondary);
+      display: flex; align-items: center; gap: 9px; font-weight: 400;
+    }
+    .feature-list li::before {
+      content: ''; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--sky); flex-shrink: 0;
+    }
+
+    /* Why choose callout strip */
+    .callout-strip {
+      background: var(--ice); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.1rem 1.4rem;
+      display: flex; align-items: center; gap: 12px;
+      font-size: 0.88rem; color: var(--text-light-secondary);
+      margin-top: 0.5rem; font-weight: 400;
+    }
+    .callout-strip svg { width: 20px; height: 20px; stroke: var(--sky); fill: none; stroke-width: 2; flex-shrink: 0; }
+    .callout-strip strong { color: var(--text-light-primary); font-weight: 600; }
+
+    /* Intro strip */
+    .services-intro {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;
+      margin-bottom: 4rem;
+    }
+    .intro-pill {
+      background: var(--light); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.25rem 1rem; text-align: center;
+      transition: all 0.2s; cursor: default;
+    }
+    .intro-pill:hover { background: var(--ice); border-color: rgba(46,127,217,0.3); transform: translateY(-2px); }
+    .intro-pill svg { width: 32px; height: 32px; fill: var(--sky); margin: 0 auto 0.75rem; display: block; }
+    .intro-pill span {
+      font-family: 'Syne', sans-serif; font-size: 0.88rem;
+      font-weight: 700; color: var(--text-light-primary); display: block;
+    }
+
+    @media (max-width: 900px) {
+      .svc-detail-card { grid-template-columns: 1fr; }
+      .svc-aside { padding: 2rem; }
+      .svc-body { padding: 2rem; }
+      .feature-list { grid-template-columns: 1fr; }
+      .services-intro { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .services-intro { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="index.html">
+    <div class="logo-icon">
+            <img src="atl logo.png" alt="AdTrans Logistics Logo" class="logo"> </div>
+       </div>
+    <span class="logo-text"></span></span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="section-tag">Our Solutions</div>
+  <h1>Complete Freight<br>Forwarding Services</h1>
+  <p>From a single parcel to full container loads — we have the expertise, network, and technology to move your cargo anywhere in the world, on time and on budget.</p>
+</div>
+
+<!-- TICKER -->
+<div class="ticker"><div class="ticker-track" id="tickerTrack"></div></div>
+
+<!-- MAIN CONTENT -->
+<section style="background:var(--white)">
+  <div class="section-inner">
+
+    <!-- Quick nav pills -->
+    <div class="services-intro">
+      <div class="intro-pill">
+        <svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+        <span>Air Freight</span>
+      </div>
+      <div class="intro-pill">
+        <svg viewBox="0 0 24 24"><path d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 2.52 1.29 5.48 1.29 8 0 1.26.65 2.62.99 4 .99h2v-2h-2zM3.95 19H4c1.6 0 3.02-.88 4-2 .98 1.12 2.4 2 4 2s3.02-.88 4-2c.98 1.12 2.4 2 4 2h.05l1.89-6.68c.08-.26.06-.54-.06-.78s-.34-.42-.6-.5L20 10.62V6c0-1.1-.9-2-2-2h-3V1H9v3H6c-1.1 0-2 .9-2 2v4.62l-1.29.42c-.26.08-.48.26-.6.5s-.15.52-.06.78L3.95 19z"/></svg>
+        <span>Sea Freight</span>
+      </div>
+      <div class="intro-pill">
+        <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+        <span>Land Transport</span>
+      </div>
+      <div class="intro-pill">
+        <svg viewBox="0 0 24 24"><path d="M14 6l-1-2H5v17h2v-7h5l1 2h7V6h-6zm4 8h-4l-1-2H7V6h5l1 2h5v6z"/></svg>
+        <span>Customs Clearance</span>
+      </div>
+    </div>
+
+    <!-- AIR FREIGHT -->
+    <div class="svc-detail-card" id="air">
+      <div class="svc-aside">
+        <div class="svc-aside-top">
+          <svg class="svc-big-icon" viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+          <h3>Air Freight</h3>
+          <p>The fastest way to move your goods internationally. Ideal for high-value, time-sensitive, or perishable cargo that cannot wait.</p>
+        </div>
+        <a href="contact.html" class="btn-primary">Get Air Quote</a>
+      </div>
+      <div class="svc-body">
+        <div class="svc-body-tag">Air Freight Solutions</div>
+        <h4>Priority Air Cargo Services</h4>
+        <p>Our air freight services offer unmatched speed and reliability for time-critical shipments. We partner with 80+ major airlines globally to secure capacity and negotiate competitive rates, ensuring your cargo reaches its destination on schedule — every time.</p>
+        <ul class="feature-list">
+          <li>Express &amp; Economy options</li>
+          <li>Charter flights available</li>
+          <li>Door-to-door delivery</li>
+          <li>Dangerous goods (IATA DGR)</li>
+          <li>Temperature-controlled cargo</li>
+          <li>Live animal transport</li>
+          <li>Oversized &amp; heavy lift cargo</li>
+          <li>Priority airport handling</li>
+          <li>Pharmaceutical cold chain</li>
+          <li>Next-flight-out services</li>
+        </ul>
+        <div class="callout-strip">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          <span><strong>Average transit time:</strong> 1–5 business days depending on origin and destination.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEA FREIGHT -->
+    <div class="svc-detail-card" id="sea">
+      <div class="svc-aside">
+        <div class="svc-aside-top">
+          <svg class="svc-big-icon" viewBox="0 0 24 24"><path d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 2.52 1.29 5.48 1.29 8 0 1.26.65 2.62.99 4 .99h2v-2h-2zM3.95 19H4c1.6 0 3.02-.88 4-2 .98 1.12 2.4 2 4 2s3.02-.88 4-2c.98 1.12 2.4 2 4 2h.05l1.89-6.68c.08-.26.06-.54-.06-.78s-.34-.42-.6-.5L20 10.62V6c0-1.1-.9-2-2-2h-3V1H9v3H6c-1.1 0-2 .9-2 2v4.62l-1.29.42c-.26.08-.48.26-.6.5s-.15.52-.06.78L3.95 19z"/></svg>
+          <h3>Sea Freight</h3>
+          <p>Cost-effective ocean shipping for large volumes. FCL and LCL consolidation options for all cargo types and trade lanes.</p>
+        </div>
+        <a href="contact.html" class="btn-primary">Get Ocean Quote</a>
+      </div>
+      <div class="svc-body">
+        <div class="svc-body-tag">Ocean Freight Solutions</div>
+        <h4>Full &amp; Less-than-Container Load Services</h4>
+        <p>Whether you need a full container or just a portion, our ocean freight services provide reliable, cost-effective solutions across all major trade lanes. We maintain strong partnerships with top shipping lines to offer competitive rates and consistent vessel schedules on 500+ routes.</p>
+        <ul class="feature-list">
+          <li>Full Container Load (FCL)</li>
+          <li>Less than Container Load (LCL)</li>
+          <li>Reefer &amp; hazardous cargo</li>
+          <li>Break bulk &amp; project cargo</li>
+          <li>Port-to-port &amp; door-to-door</li>
+          <li>Container GPS tracking</li>
+          <li>Marine cargo insurance</li>
+          <li>Roll-on/Roll-off (RoRo)</li>
+          <li>Consolidation services</li>
+          <li>Pre-shipment inspection</li>
+        </ul>
+        <div class="callout-strip">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <span><strong>500+ trade routes</strong> with weekly sailings from all major ports worldwide.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- LAND TRANSPORT -->
+    <div class="svc-detail-card" id="land">
+      <div class="svc-aside">
+        <div class="svc-aside-top">
+          <svg class="svc-big-icon" viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+          <h3>Land Transport</h3>
+          <p>Extensive road and rail network covering continental routes with flexible full and part load options.</p>
+        </div>
+        <a href="contact.html" class="btn-primary">Get Road Quote</a>
+      </div>
+      <div class="svc-body">
+        <div class="svc-body-tag">Road &amp; Rail Solutions</div>
+        <h4>Continental Road &amp; Rail Freight</h4>
+        <p>Our land transport network spans major continental routes across Europe, Asia, and the Americas, providing flexible and reliable freight solutions. From full truckloads to part loads and intermodal rail freight, we ensure your cargo moves efficiently across borders with real-time GPS tracking.</p>
+        <ul class="feature-list">
+          <li>Full Truckload (FTL)</li>
+          <li>Less than Truckload (LTL)</li>
+          <li>Temperature-controlled transport</li>
+          <li>Cross-border documentation</li>
+          <li>Last-mile delivery</li>
+          <li>Intermodal rail solutions</li>
+          <li>Hazmat transport (ADR)</li>
+          <li>GPS fleet tracking</li>
+          <li>Scheduled express routes</li>
+          <li>Curtainsider &amp; flatbed options</li>
+        </ul>
+        <div class="callout-strip">
+          <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          <span><strong>Real-time GPS tracking</strong> on all vehicles with live ETA updates sent to your inbox.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CUSTOMS CLEARANCE -->
+    <div class="svc-detail-card" id="customs">
+      <div class="svc-aside">
+        <div class="svc-aside-top">
+          <svg class="svc-big-icon" viewBox="0 0 24 24"><path d="M14 6l-1-2H5v17h2v-7h5l1 2h7V6h-6zm4 8h-4l-1-2H7V6h5l1 2h5v6z"/></svg>
+          <h3>Customs Clearance</h3>
+          <p>Expert brokerage and compliance services ensuring smooth, legally compliant border crossings worldwide.</p>
+        </div>
+        <a href="contact.html" class="btn-primary">Get Customs Quote</a>
+      </div>
+      <div class="svc-body">
+        <div class="svc-body-tag">Customs Brokerage</div>
+        <h4>Expert Trade Compliance &amp; Brokerage</h4>
+        <p>Our licensed customs brokers handle all aspects of import and export compliance across 180+ countries. We navigate complex regulations, prepare accurate documentation, and coordinate directly with customs authorities to minimize delays, avoid penalties, and ensure smooth clearance for every shipment.</p>
+        <ul class="feature-list">
+          <li>Import &amp; export clearance</li>
+          <li>HS code classification</li>
+          <li>Duty &amp; tax calculation</li>
+          <li>Trade compliance consulting</li>
+          <li>Bonded warehouse management</li>
+          <li>ATA Carnet processing</li>
+          <li>Free Trade Agreement advisory</li>
+          <li>Document preparation</li>
+          <li>Appeals &amp; dispute resolution</li>
+          <li>Sanctions &amp; embargo checks</li>
+        </ul>
+        <div class="callout-strip">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span><strong>Licensed brokers</strong> in all major jurisdictions — your cargo clears faster with AdTrans.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="logo" href="index.html">
+        <img src="atl logo.png" alt="AdTrans Logistics Logo" class="logo">
+                <span class="logo-text"></span></span>
+      </a>
+      <p>Your trusted global freight forwarding partner. Moving cargo smarter across many countries.</p>
+      <div class="footer-socials">
+        <a class="footer-social-link" href="#">in</a>
+        <a class="footer-social-link" href="#">tw</a>
+        <a class="footer-social-link" href="https://web.facebook.com/profile.php?id=61585179710197#">fb</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="services.html#air">Air Freight</a></li>
+        <li><a href="services.html#sea">Sea Freight</a></li>
+        <li><a href="services.html#land">Land Transport</a></li>
+        <li><a href="services.html#customs">Customs Clearance</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="about.html#team">Our Team</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul>
+        <li><a href="#">Track Shipment</a></li>
+        <li><a href="contact.html">Get a Quote</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025Adtrans Logistics Inc. All rights reserved.</span>
+    <span></span>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="js/main.js"></script>
+</body>
+</html>
+
